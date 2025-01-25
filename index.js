@@ -13,13 +13,13 @@ async function takeScreenshot(url, browser, page) {
     await sleep(5000);
 
     // Create screenshots directory if it doesn't exist
-    const screenshotsDir = path.join(__dirname, "screenshots");
+    const screenshotsDir = path.join(__dirname, "screenshots2");
     await fs.ensureDir(screenshotsDir);
 
     // Generate filename from URL
     const filename = `${Date.now()}-${new URL(url).pathname.replace(
       /[^a-zA-Z0-9]/g,
-      "_"
+      "_",
     )}.png`;
     const filepath = path.join(screenshotsDir, filename);
 
@@ -41,7 +41,7 @@ async function main() {
 
   try {
     // Read URLs from file
-    const urls = await fs.readFile("urls", "utf-8");
+    const urls = await fs.readFile("urls2", "utf-8");
     const urlList = urls
       .split("\n")
       .reverse()
